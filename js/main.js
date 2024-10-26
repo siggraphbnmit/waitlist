@@ -11,6 +11,7 @@ const loadingText = document.getElementById("loadingText");
 const inputFields = document.getElementById("inputFields");
 const initialPrompt = document.getElementById("initialPrompt");
 const yesButton = document.getElementById("yesButton");
+const contentText=document.getElementById("content");
 
 
 const loadingMessages = [
@@ -64,6 +65,12 @@ async function initializeFirebase() {
         throw new Error('Firebase initialization failed');
     }
 }
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.querySelector(".loader").classList.add("slide-up");
+    }, 2000);
+});
 
 
 const validateInput = {
@@ -131,7 +138,7 @@ async function simulateLoading() {
         loadingText.textContent = getRandomMessage();
 
         const interval = setInterval(() => {
-            progress += 0.5;
+            progress += 0.25;
             progressBar.style.width = `${progress}%`;
 
             if (progress % 25 === 0) {
@@ -194,11 +201,16 @@ function showSuccessMessage() {
     popupMessage.style.display = "block";
     inputFields.style.display = "none"; 
     initialPrompt.style.display = "none"; 
+    contentText.style.display="none";
     confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
-    });
+        particleCount: 800,
+        spread: 800,
+        startVelocity: 10,
+        decay: 1,
+        gravity: 0.2,
+        origin: { y: -0.5 },
+        ticks: 600
+    });
 }
 
 

@@ -24,19 +24,22 @@
     
 </head>
 <body>
+    <div class="loader">
+        <img src="assets/siggraphlogofav.png" alt="Loading Logo" class="loader-logo">
+    </div>
+
     <div class="container">
         <div class="logo-container">
             <a href="#"><img src="assets/siggraphbnmitlogo.png" alt="Siggraph Logo"></a>
             
         </div>
-        <div class="content">
+        <div class="content" id="content">
             <div>
                 <span style="color: white;">Join the WAITLIST for </span>
                 <span style="color: #FFAD0F;">Siggraph BNMIT</span>
                 <span style="color: white;"> Today!</span>
             </div>
-            <div class="description">Brace yourself for an extraordinary journey into the world of design.</div>
-            
+
         </div>
         
         <div class="prompt" id="initialPrompt">
@@ -58,9 +61,8 @@
     </div>
 
     <div id="popupMessage">
-        <p>Congratulations! You have been added to the Waitlist!</p>
+        <p><span id="congo" class="content span" style="color: white;">Congratulations!</span> You have been added to the Waitlist!</p>
         <a href="https://bento.me/siggraphbnmit" target="_blank"><button id="popupButton">Yeayyy!</button></a>
-        
     </div>
     
     <div id="loadingScreen">
