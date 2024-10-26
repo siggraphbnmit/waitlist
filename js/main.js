@@ -32,14 +32,14 @@ const loadingMessages = [
 ];
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBR08BDsS3ny7XQ-N1mezON22wta6QaM3k",
-  authDomain: "sigg-waitlist-2024.firebaseapp.com",
-  databaseURL: "https://sigg-waitlist-2024-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "sigg-waitlist-2024",
-  storageBucket: "sigg-waitlist-2024.appspot.com",
-  messagingSenderId: "211872816380",
-  appId: "1:211872816380:web:e626cd629430cc676a4b79"
-};
+    apiKey: "AIzaSyBR08BDsS3ny7XQ-N1mezON22wta6QaM3k",
+    authDomain: "sigg-waitlist-2024.firebaseapp.com",
+    databaseURL: "https://sigg-waitlist-2024-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "sigg-waitlist-2024",
+    storageBucket: "sigg-waitlist-2024.appspot.com",
+    messagingSenderId: "211872816380",
+    appId: "1:211872816380:web:e626cd629430cc676a4b79"
+  };
 
 let app;
 let db;
@@ -181,14 +181,7 @@ async function checkIfExists(email, phone) {
 }
 
 
-async function hashData(data) {
-    const encoder = new TextEncoder();
-    const dataBuffer = encoder.encode(data);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
-    return Array.from(new Uint8Array(hashBuffer))
-        .map(byte => byte.toString(16).padStart(2, '0'))
-        .join('');
-}
+
 
 
 function handleError(error) {
@@ -253,15 +246,14 @@ async function handleEmailSubmit() {
         }
 
         
-        const hashedEmail = await hashData(email);
-        const hashedPhone = await hashData(phone);
+        
 
         
         const userRef = db.ref("waitlist").push();
         await userRef.set({
             name: sanitizeInput(name),
-            email: hashedEmail,
-            phone: hashedPhone,
+            email: email,
+            phone: phone,
             timestamp: firebase.database.ServerValue.TIMESTAMP,
             userAgent: navigator.userAgent,
             registrationDate: new Date().toISOString()
