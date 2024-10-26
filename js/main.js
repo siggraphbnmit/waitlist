@@ -1,7 +1,3 @@
-if (typeof window === 'undefined') {
-    require('dotenv').config()
-}
-
 // DOM Elements
 const nameField = document.getElementById("nameField");
 const emailField = document.getElementById("emailField");
