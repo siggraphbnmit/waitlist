@@ -1,0 +1,275 @@
+/* Reset and base styles */
+html, 
+body { 
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+    overflow: hidden; 
+    max-width: 2883px; 
+    min-width: 390px; 
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: url('../assets/siggraphteam.svg') no-repeat center bottom;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    animation: backgroundMove 10s linear infinite;
+}
+
+/* Animations */
+@keyframes backgroundMove {
+    0% { background-position: left center; }
+    50% { background-position: right center; }
+    100% { background-position: left center; }
+}
+
+
+.whatsthis {
+    font-family: 'Rock Salt', cursive; /* Apply Rock Salt font */
+    font-size: 24px; /* Adjust size as needed */
+    color: #FFAD0F; /* Keep the existing color */
+    margin-bottom: 12px; /* Add margin for spacing */
+}
+
+
+
+
+
+
+
+
+/* Container styles */
+.container { 
+    width: 100%; 
+    padding: 28px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 12px; 
+    text-align: center; 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Logo styles */
+.logo-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 80%; 
+}
+
+.logo-container img { 
+    width: 180px; 
+    height: auto; 
+}
+
+/* Content styles */
+.content { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 3px; 
+}
+
+.content span { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 68px; 
+}
+
+.description { 
+    color: rgba(255, 255, 255, 0.80); 
+    font-size: 22px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
+    padding-bottom: 20px; 
+}
+
+/* Form styles */
+.input-box { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 15px; 
+    max-width: 500px; 
+    width: 100%; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.input-field { 
+    width: 100%; 
+    padding: 12px; 
+    font-size: 18px; 
+    font-family: 'Montserrat', sans-serif; 
+    border: 1px solid #DDDDDD; 
+    outline: none; 
+    color: #333; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+}
+
+/* Button styles */
+.button { 
+    background: #FFAD0F; 
+    border-radius: 10px; 
+    color: white; 
+    font-size: 18px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    padding: 15px; 
+    cursor: pointer; 
+    border: none; 
+    width: 100%; 
+}
+
+.yesbutton { 
+    background: #FFAD0F; 
+    border-radius: 10px; 
+    color: white; 
+    font-size: 18px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    padding: 15px; 
+    cursor: pointer; 
+    border: none; 
+}
+
+/* Message styles */
+#promptMessage { 
+    font-size: 20px; 
+    color: #FFAD0F; 
+    font-weight: 700; 
+    font-family: 'Montserrat', sans-serif; 
+    margin-bottom: 20px; 
+}
+
+#popupMessage { 
+    display: none; 
+    position: absolute; 
+    background-color: #230658; 
+    padding: 20px; 
+    border-radius: 15px; 
+    text-align: center; 
+    width: 300px; 
+    top: 20%; 
+    left: 50%; 
+    transform: translate(-50%, -20%); 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); 
+    z-index: 2; 
+}
+
+#popupMessage p { 
+    color: #fff; 
+    font-size: 18px; 
+    font-weight: 700; 
+}
+
+#popupButton {
+    background: #FFAD0F; 
+    border-radius: 10px; 
+    color: white; 
+    font-size: 18px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    padding: 15px; 
+    cursor: pointer; 
+    border: none; 
+}
+
+/* Loading screen styles */
+#loadingScreen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(35, 6, 88, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+.loading-text {
+    color: #230658;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    min-height: 54px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #FFAD0F;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+    .container { 
+        padding: 38px; 
+        gap: 18px; 
+    }
+    .logo-container img { 
+        width: 120px; 
+    }
+    .content span { 
+        font-size: 48px; 
+        line-height: 100%; 
+    }
+    .description { 
+        font-size: 16px; 
+        padding-bottom: 8px; 
+        padding-top: 2px; 
+    }
+    .input-box { 
+        padding: 10px; 
+        max-width: 340px; 
+    }
+    .input-field { 
+        padding: 10px; 
+        font-size: 14px; 
+    }
+    .button { 
+        font-size: 14px; 
+        padding: 10px; 
+    }
+    #popupMessage { 
+        width: 240px; 
+    }
+    .whatsthis {
+        font-size: 14px; 
+    }   
+}

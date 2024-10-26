@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Siggraph BNMIT Waitlist</title>
+        <link rel="icon" type="image/png" href="assets/siggraphlogofav.png">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+        <!-- Firebase CDN scripts -->
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+        <script src="config.js"></script>
+
+    </head>
+        
+    
+
+    
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="#"><img src="assets/siggraphbnmitlogo.png" alt="Siggraph Logo"></a>
+            
+        </div>
+        <div class="content">
+            <div>
+                <span style="color: white;">Join the WAITLIST for </span>
+                <span style="color: #FFAD0F;">Siggraph BNMIT</span>
+                <span style="color: white;"> Today!</span>
+            </div>
+            <div class="description">Brace yourself for an extraordinary journey into the world of design.</div>
+            
+        </div>
+        
+        <div class="prompt" id="initialPrompt">
+            <div class="whatsthis">
+                <span class="highlighty">Be the first one to get notified</span> when the registrations <span class="highlightg">OPEN </span>for SIGGRAPH BNMIT
+            </div>
+            
+            
+            <div class="description">Are you excited to join Siggraph?</div>
+            <button class="yesbutton" id="yesButton">Yeyy, Let's go! 🚀</button>
+        </div>
+
+        <div class="input-box" id="inputFields" style="display: none;">
+            <input type="text" id="nameField" class="input-field" placeholder="Your Name" required>
+            <input type="email" id="emailField" class="input-field" placeholder="Your Email" required>
+            <input type="tel" id="phoneField" class="input-field" placeholder="Your Phone Number" required>
+            <button class="button" id="submitButton">GET STARTED</button>
+        </div>
+    </div>
+
+    <div id="popupMessage">
+        <p>Congratulations! You have been added to the Waitlist!</p>
+        <a href="https://bento.me/siggraphbnmit" target="_blank"><button id="popupButton">Yeayyy!</button></a>
+        
+    </div>
+    
+    <div id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-text" id="loadingText">Adding you to the waitlist...</div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
