@@ -205,7 +205,7 @@ function showSuccessMessage() {
     confetti({
         particleCount: 800,
         spread: 800,
-        startVelocity: 10,
+        startVelocity: 5,
         decay: 1,
         gravity: 0.2,
         origin: { y: -0.5 },
