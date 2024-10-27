@@ -18,7 +18,6 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    animation: backgroundMove 10s linear infinite;
 }
 
 /* Animations */
@@ -38,6 +37,24 @@ body {
 
 
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1C0546;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: transform 0.8s ease;
+}
+
+/* Slide-up effect */
+.loader.slide-up {
+    transform: translateY(-100%);
+}
 
 
 
@@ -75,6 +92,7 @@ body {
     flex-direction: column; 
     align-items: center; 
     gap: 3px; 
+
 }
 
 .content span { 
@@ -155,14 +173,13 @@ body {
     display: none; 
     position: absolute; 
     background-color: #230658; 
-    padding: 20px; 
+    padding: 5px; 
     border-radius: 15px; 
     text-align: center; 
-    width: 300px; 
-    top: 20%; 
+    width: 430px; 
+    top: 28%; 
     left: 50%; 
     transform: translate(-50%, -20%); 
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); 
     z-index: 2; 
 }
 
@@ -236,6 +253,33 @@ body {
     transition: width 0.5s ease-in-out;
 }
 
+
+.icon-row {
+  display: flex;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  justify-content: center;
+}
+
+/* Icon styling */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  color: #FFAD0F; /* Icon color set to yellow */
+  font-size: 28px; /* Increased icon size */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect */
+.icon:hover {
+  color: white; /* Icon color changes to white on hover */
+}
+
 /* Media queries */
 @media (max-width: 1024px) {
     .container { 
@@ -246,13 +290,13 @@ body {
         width: 120px; 
     }
     .content span { 
-        font-size: 48px; 
+        font-size: 38px; 
         line-height: 100%; 
     }
     .description { 
         font-size: 16px; 
         padding-bottom: 8px; 
-        padding-top: 2px; 
+        padding-top: 12px; 
     }
     .input-box { 
         padding: 10px; 
@@ -268,8 +312,23 @@ body {
     }
     #popupMessage { 
         width: 240px; 
+        row-gap: 30px;
     }
     .whatsthis {
         font-size: 14px; 
     }   
+
+    .loader-logo{
+        width: 80px; 
+    }
+
+    .icon-row{
+        display: flex;
+        margin-top: 80px;
+    }
+
+    .icon{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }

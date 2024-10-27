@@ -1,7 +1,3 @@
-if (typeof window === 'undefined') {
-    require('dotenv').config()
-}
-
 // DOM Elements
 const nameField = document.getElementById("nameField");
 const emailField = document.getElementById("emailField");
@@ -15,6 +11,7 @@ const loadingText = document.getElementById("loadingText");
 const inputFields = document.getElementById("inputFields");
 const initialPrompt = document.getElementById("initialPrompt");
 const yesButton = document.getElementById("yesButton");
+const contentText=document.getElementById("content");
 
 
 const loadingMessages = [
@@ -36,14 +33,14 @@ const loadingMessages = [
 ];
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.NEXT_PUBLIC_.FIREBASE_DATABASE_URL,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
-};
+    apiKey: "AIzaSyBR08BDsS3ny7XQ-N1mezON22wta6QaM3k",
+    authDomain: "sigg-waitlist-2024.firebaseapp.com",
+    databaseURL: "https://sigg-waitlist-2024-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "sigg-waitlist-2024",
+    storageBucket: "sigg-waitlist-2024.appspot.com",
+    messagingSenderId: "211872816380",
+    appId: "1:211872816380:web:e626cd629430cc676a4b79"
+  };
 
 let app;
 let db;
@@ -68,6 +65,12 @@ async function initializeFirebase() {
         throw new Error('Firebase initialization failed');
     }
 }
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.querySelector(".loader").classList.add("slide-up");
+    }, 2000);
+});
 
 
 const validateInput = {
@@ -135,7 +138,7 @@ async function simulateLoading() {
         loadingText.textContent = getRandomMessage();
 
         const interval = setInterval(() => {
-            progress += 0.5;
+            progress += 0.25;
             progressBar.style.width = `${progress}%`;
 
             if (progress % 25 === 0) {
@@ -185,14 +188,7 @@ async function checkIfExists(email, phone) {
 }
 
 
-async function hashData(data) {
-    const encoder = new TextEncoder();
-    const dataBuffer = encoder.encode(data);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
-    return Array.from(new Uint8Array(hashBuffer))
-        .map(byte => byte.toString(16).padStart(2, '0'))
-        .join('');
-}
+
 
 
 function handleError(error) {
@@ -205,11 +201,16 @@ function showSuccessMessage() {
     popupMessage.style.display = "block";
     inputFields.style.display = "none"; 
     initialPrompt.style.display = "none"; 
+    contentText.style.display="none";
     confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
-    });
+        particleCount: 800,
+        spread: 800,
+        startVelocity: 5,
+        decay: 1,
+        gravity: 0.2,
+        origin: { y: -0.5 },
+        ticks: 600
+    });
 }
 
 
@@ -257,15 +258,14 @@ async function handleEmailSubmit() {
         }
 
         
-        const hashedEmail = await hashData(email);
-        const hashedPhone = await hashData(phone);
+        
 
         
         const userRef = db.ref("waitlist").push();
         await userRef.set({
             name: sanitizeInput(name),
-            email: hashedEmail,
-            phone: hashedPhone,
+            email: email,
+            phone: phone,
             timestamp: firebase.database.ServerValue.TIMESTAMP,
             userAgent: navigator.userAgent,
             registrationDate: new Date().toISOString()
